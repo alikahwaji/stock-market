@@ -1,10 +1,25 @@
+<%= form_tag root_path, :method => 'POST' do %>
+<%= text_field_tag 'id', nil, placeholder: "Search the company stock", size: 50 %>
+<%= submit_tag 'Submit' %>
+<% end %>
 
-<h1>Home page</h1>
-<p>Hello</p>
+<br/><br/>
 
-<br />
+<% if @stock %>
 
-<%=  stock = StockQuote::Stock.quote("goog") %>
+    <strong>Company Name: </strong><%= @stock.name %> - <%= @stock.symbol %><br/>
+   
 
-<%= stock.financials[0]['url'] %>
+    
+<% elsif @nothing %>
+    <%= @nothing %>
+<% end %>
+
+<% if @error %>
+    <%= @error %>
+<% end %>
+
+
+
+
 
